@@ -1,6 +1,6 @@
 from typing import Callable, TypeVar
 
-T, V = TypeVar("T"), TypeVar("V")
+T, V, U, W = TypeVar("T"), TypeVar("V"), TypeVar("U"), TypeVar("W")
 
 
 def identity(x: T) -> T:
