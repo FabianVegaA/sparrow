@@ -1,6 +1,6 @@
 import pytest
 
-from src.when import when
+from src.decorator.when import when
 
 cases = [
     (lambda x: x != 0, lambda x: 1 / x, 2, 0.5),

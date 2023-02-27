@@ -1,6 +1,6 @@
-import pytest
-
 from typing import Callable, TypeVar
+
+import pytest
 
 from src.data.result import Failure, Result, Success
 

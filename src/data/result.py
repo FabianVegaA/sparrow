@@ -1,11 +1,9 @@
+from abc import ABC
+from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
-from src.data.functor import Functor
 from src.data.bifunctor import Bifunctor
-
-from abc import ABC
-
-from dataclasses import dataclass
+from src.data.functor import Functor
 
 T, V, W, U = TypeVar("T"), TypeVar("V"), TypeVar("W"), TypeVar("U")
 

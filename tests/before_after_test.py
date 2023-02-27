@@ -1,6 +1,6 @@
 import pytest
 
-from src.before_after import after, before
+from src.decorator.before_after import after, before
 
 cases_before = [
     (lambda x: x + 1, lambda x: x + 2, 1, 4),
