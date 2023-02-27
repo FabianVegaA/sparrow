@@ -1,11 +1,9 @@
 from functools import wraps
 from typing import Callable, TypeVar
 
+from src import identity
+
 T = TypeVar("T")
-
-
-def identity(x: T) -> T:
-    return x
 
 
 def when(proposition: Callable[[T], bool]) -> Callable[[T], T]:
