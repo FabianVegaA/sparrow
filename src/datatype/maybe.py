@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
 from src import T, V
-from src.data.functor import Functor
+from src.datatype.functor import Functor
 
 
 class Maybe(Functor[T], ABC):

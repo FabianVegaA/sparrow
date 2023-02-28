@@ -3,8 +3,8 @@ from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
 from src import identity
-from src.data.bifunctor import Bifunctor
-from src.data.functor import Functor
+from src.datatype.bifunctor import Bifunctor
+from src.datatype.functor import Functor
 
 T, V, W, U = TypeVar("T"), TypeVar("V"), TypeVar("W"), TypeVar("U")
 

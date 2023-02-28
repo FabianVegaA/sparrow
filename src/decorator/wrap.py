@@ -2,8 +2,8 @@ from functools import wraps
 from typing import Callable, Generic, Optional
 
 from src import T
-from src.data.maybe import Just, Maybe, Nothing
-from src.data.result import Failure, Result, Success
+from src.datatype.maybe import Just, Maybe, Nothing
+from src.datatype.result import Failure, Result, Success
 
 
 def maybe(f: Callable[..., Optional[T]]) -> Callable[..., Maybe[T]]:
