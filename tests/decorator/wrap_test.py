@@ -1,7 +1,7 @@
 import pytest
 
-from src.data.maybe import Just, Nothing
-from src.data.result import Failure, Success
+from src.datatype.maybe import Just, Nothing
+from src.datatype.result import Failure, Success
 from src.decorator.wrap import maybe, result
 
 case_maybe = [
