@@ -20,10 +20,9 @@ def currify(func: Callable[..., T]) -> Callable[..., T]:
     3
     >>> add_one(3)
     4
-    >>> add_one_map = currify(map)(operator.add)
+    >>> add_one_map = currify(map)(add_one)
     >>> add_one_map([1, 2, 3])
     [2, 3, 4]
-
     """
 
     @wraps(func)
