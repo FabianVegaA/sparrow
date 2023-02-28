@@ -15,6 +15,7 @@ class Maybe(Functor[T], ABC):
             isinstance(self, Nothing) or self.value == other.value
         )
 
+
 @dataclass
 class Just(Maybe[T]):
     __slots__ = ("value",)
