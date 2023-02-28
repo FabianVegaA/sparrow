@@ -1,14 +1,35 @@
 [tool.poetry]
-name = "composition-decorator"
+name = "sparrow"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "A library with a collection of decorators and functions to functional programming in Python"
+authors = ["Fabián Vega <i@example.com>"]
 readme = "README.md"
-packages = [{include = "composition_decorator"}]
+license = "BSD-3-Clause"
+repository = "https://github.com/FabianVegaA/sparrow"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: BSD 3-Clause License",
+]
+packages = [{ include = "src" }]
+keywords = [
+    "functional",
+    "programming",
+    "decorators",
+    "functional programming",
+    "functional-programming",
+    "decorators",
+    "decorator",
+    "decorator library",
+    "decorator-library",
+    "sparrow",
+    "sparrow library",
+    "sparrow-library"
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"
