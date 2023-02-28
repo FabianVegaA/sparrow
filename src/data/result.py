@@ -2,6 +2,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
+from src import identity
 from src.data.bifunctor import Bifunctor
 from src.data.functor import Functor
 
@@ -33,10 +34,10 @@ class Result(Functor[T], Bifunctor[T, V], ABC):
         )
 
     def first(self: "Result[T, V]", f: Callable[[T], U]) -> "Result[U, V]":
-        return Success(f(self.value)) if isinstance(self, Success) else self
+        return self.bimap(f, identity)
 
     def second(self: "Result[T, V]", f: Callable[[V], W]) -> "Result[T, W]":
-        return self if isinstance(self, Success) else Failure(f(self.error))
+        return self.bimap(identity, f)
 
 
 @dataclass
