@@ -1,0 +1,33 @@
+name: Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      - uses: Gr1N/setup-poetry@v8
+      - run: poetry install
+      - run: poetry run black --check .
+      - run: poetry run isort --check .
+  test:
+    runs-on: ubuntu-latest
+    needs: format
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      - uses: Gr1N/setup-poetry@v8
+      - run: poetry install
+      - run: poetry run pytest
