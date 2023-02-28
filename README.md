@@ -6,7 +6,11 @@ This library solves problems and limitations that I have found programming in Py
 
 ## Installation
 
-Coming soon...
+For now, the library is not in PyPI, so you can install it with the following command:
+
+```bash
+$ pip install git+https://github.com/FabianVegaA/sparrow.git
+```
 
 ## Documentation
 
