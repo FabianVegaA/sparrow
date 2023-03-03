@@ -1,13 +1,12 @@
-from abc import ABC, abstractmethod
 from typing import Callable, TypeVar
 
-from src.datatype.applicative import Applicative
+from src import T, U
+from src.kind import Kind, kind_function
+from src.kind.applicative import Applicative
 
-T, U = TypeVar("T"), TypeVar("U")
 
-
-class Monad(Applicative[T], ABC):
-    @abstractmethod
+class Monad(Applicative[T], Kind):
+    @kind_function
     def bind(self: "Monad[T]", f: Callable[[T], "Monad[U]"]) -> "Monad[U]":
         pass
 

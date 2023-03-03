@@ -1,20 +1,21 @@
-from abc import ABC, abstractmethod
 from typing import Callable, Generic, TypeVar
 
-T, V, W, U = TypeVar("T"), TypeVar("V"), TypeVar("W"), TypeVar("U")
+from src import T, U, V, W
+from src.kind import Kind, kind_function
 
 
-class Bifunctor(Generic[T, U], ABC):
-    @abstractmethod
+class Bifunctor(Generic[T, U], Kind):
+    @kind_function
     def bimap(
         self: "Bifunctor[T, V]", f: Callable[[T], U], g: Callable[[V], W]
     ) -> "Bifunctor[U, W]":
         pass
 
-    @abstractmethod
+    @kind_function
     def first(self: "Bifunctor[T, V]", f: Callable[[T], U]) -> "Bifunctor[U, V]":
         pass
 
+    @kind_function
     def second(self: "Bifunctor[T, V]", f: Callable[[V], W]) -> "Bifunctor[T, W]":
         return self.bimap(lambda x: x, f)
 

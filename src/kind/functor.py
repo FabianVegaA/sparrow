@@ -1,11 +1,11 @@
-from abc import ABC, abstractmethod
 from typing import Callable, Generic, TypeVar
 
-T, U = TypeVar("T"), TypeVar("U")
+from src import T, U
+from src.kind import Kind, kind_function
 
 
-class Functor(Generic[T], ABC):
-    @abstractmethod
+class Functor(Generic[T], Kind):
+    @kind_function
     def fmap(self: "Functor[T]", f: Callable[[T], U]) -> "Functor[U]":
         pass
 
