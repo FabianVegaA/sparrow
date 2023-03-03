@@ -2,14 +2,13 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
-from src import identity
-from src.datatype.bifunctor import Bifunctor
-from src.datatype.functor import Functor
+from src import T, U, V, W, identity
+from src.datatype import DataType
+from src.kind.bifunctor import Bifunctor
+from src.kind.functor import Functor
 
-T, V, W, U = TypeVar("T"), TypeVar("V"), TypeVar("W"), TypeVar("U")
 
-
-class Result(Functor[T], Bifunctor[T, V], ABC):
+class Result(Functor[T], Bifunctor[T, V], DataType):
     def __repr__(self):
         return f"Result({self.value}, {self.error})"
 

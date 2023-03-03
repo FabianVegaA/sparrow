@@ -3,10 +3,11 @@ from dataclasses import dataclass
 from typing import Callable, Generic, Optional, TypeVar
 
 from src import T, V
-from src.datatype.monad import Monad
+from src.datatype import DataType
+from src.kind.monad import Monad
 
 
-class Maybe(Monad[T], ABC):
+class Maybe(Monad[T], DataType):
     def fmap(self: "Maybe[T]", f: Callable[[T], V]) -> "Maybe[V]":
         return self if isinstance(self, Nothing) else Just(f(self.value))
 
