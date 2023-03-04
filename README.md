@@ -12,6 +12,12 @@ For now, the library is not in PyPI, so you can install it with the following co
 $ pip install git+https://github.com/FabianVegaA/sparrow.git
 ```
 
+Or using Poetry:
+
+```bash
+$ poetry add "sparrow @ git+https://github.com/FabianVegaA/sparrow.git"
+```
+
 ## Documentation
 
 Coming soon...
