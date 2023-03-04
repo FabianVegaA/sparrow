@@ -12,21 +12,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "License :: BSD 3-Clause License",
 ]
-packages = [{ include = "sparrow", from = "src" }]
-keywords = [
-    "functional",
-    "programming",
-    "decorators",
-    "functional programming",
-    "functional-programming",
-    "decorators",
-    "decorator",
-    "decorator library",
-    "decorator-library",
-    "sparrow",
-    "sparrow library",
-    "sparrow-library"
-]
+packages = [{ include = "sparrow/*", from = "src" }]
+keywords = ["functional", "programming", "decorator", "sparrow", "library"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
