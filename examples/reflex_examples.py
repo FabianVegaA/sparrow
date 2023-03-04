@@ -1,6 +1,6 @@
-from src.compose import compose
-from src.currify import currify
-from src.reflex import reflex
+from src.sparrow.compose import compose
+from src.sparrow.currify import currify
+from src.sparrow.reflex import reflex
 
 add, sub, mul, mod = map(currify, (add, sub, mul, mod))
 

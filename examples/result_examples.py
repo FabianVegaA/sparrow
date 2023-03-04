@@ -1,6 +1,6 @@
-from src.data.bifunctor import first, second
-from src.data.functor import fmap
-from src.data.result import Failure, Result, Success
+from src.sparrow.data.bifunctor import first, second
+from src.sparrow.data.functor import fmap
+from src.sparrow.data.result import Failure, Result, Success
 
 
 def inverse(x: int) -> Result[float, str]:

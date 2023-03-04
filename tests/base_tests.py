@@ -1,6 +1,6 @@
 import pytest
 
-from src import constant, identity
+from src.sparrow import constant, identity
 
 cases = [
     (1, 1),

@@ -2,8 +2,8 @@ from typing import Callable
 
 import pytest
 
-from src import T, V
-from src.datatype.maybe import Just, Maybe, Nothing
+from src.sparrow import T, V
+from src.sparrow.datatype.maybe import Just, Maybe, Nothing
 
 cases_fmap = [
     (Just(1), lambda x: x + 1, Just(2)),

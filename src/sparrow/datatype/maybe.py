@@ -2,9 +2,9 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Callable, Generic, Optional, TypeVar
 
-from src import T, V
-from src.datatype import DataType
-from src.kind.monad import Monad
+from src.sparrow import T, V
+from src.sparrow.datatype import DataType
+from src.sparrow.kind.monad import Monad
 
 
 class Maybe(Monad[T], DataType):

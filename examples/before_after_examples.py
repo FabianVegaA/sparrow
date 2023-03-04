@@ -1,4 +1,4 @@
-from src.before_after import after, before
+from src.sparrow.before_after import after, before
 
 
 @after(lambda x: x + 1)

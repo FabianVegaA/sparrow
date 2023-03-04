@@ -6,8 +6,8 @@ from typing import Callable, TypeVar
 
 import pytest
 
-from src.decorator.compose import compose
-from src.decorator.reflex import reflex
+from src.sparrow.decorator.compose import compose
+from src.sparrow.decorator.reflex import reflex
 
 partial_print = partial(print)
 
