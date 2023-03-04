@@ -12,7 +12,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "License :: BSD 3-Clause License",
 ]
-packages = [{ include = "src" }]
+packages = [{ include = "sparrow", from = "src" }]
 keywords = [
     "functional",
     "programming",
