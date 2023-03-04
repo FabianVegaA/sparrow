@@ -10,7 +10,9 @@ cases_when = [
 ]
 
 
-@pytest.mark.parametrize("condition, then, value, otherwise, expected", cases_when)
+@pytest.mark.parametrize(
+    "condition, then, value, otherwise, expected", cases_when
+)
 def test_when(condition, then, value, otherwise, expected):
     if otherwise:
         assert when(condition, then, value, otherwise) == expected
@@ -18,7 +20,9 @@ def test_when(condition, then, value, otherwise, expected):
         assert when(condition, then, value) == expected
 
 
-@pytest.mark.parametrize("condition, then, value, otherwise, expected", cases_when)
+@pytest.mark.parametrize(
+    "condition, then, value, otherwise, expected", cases_when
+)
 def test_unless(condition, then, value, otherwise, expected):
     if otherwise:
         assert unless(not condition, then, value, otherwise) == expected
@@ -47,12 +51,20 @@ cases_map_when = [
 
 
 @pytest.mark.parametrize(
-    "predicate, then, value, otherwise, expected_when, expected_unless", cases_map_when
+    "predicate, then, value, otherwise, expected_when, expected_unless",
+    cases_map_when,
 )
-def test_map_when(predicate, then, value, otherwise, expected_when, expected_unless):
+def test_map_when(
+    predicate, then, value, otherwise, expected_when, expected_unless
+):
     if otherwise:
-        assert list(map_when(predicate, then, value, otherwise)) == expected_when
-        assert list(map_unless(predicate, then, value, otherwise)) == expected_unless
+        assert (
+            list(map_when(predicate, then, value, otherwise)) == expected_when
+        )
+        assert (
+            list(map_unless(predicate, then, value, otherwise))
+            == expected_unless
+        )
     else:
         assert list(map_when(predicate, then, value)) == expected_when
         assert list(map_unless(predicate, then, value)) == expected_unless

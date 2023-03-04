@@ -34,7 +34,9 @@ cases_apply = [
 
 
 @pytest.mark.parametrize("maybe, maybe_f, expected", cases_apply)
-def test_apply(maybe: Maybe[T], maybe_f: Maybe[Callable[[T], V]], expected: Maybe[V]):
+def test_apply(
+    maybe: Maybe[T], maybe_f: Maybe[Callable[[T], V]], expected: Maybe[V]
+):
     assert maybe.apply(maybe_f) == expected
 
 

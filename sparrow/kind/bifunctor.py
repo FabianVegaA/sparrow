@@ -12,11 +12,15 @@ class Bifunctor(Generic[T, U], Kind):
         pass
 
     @kind_function
-    def first(self: "Bifunctor[T, V]", f: Callable[[T], U]) -> "Bifunctor[U, V]":
+    def first(
+        self: "Bifunctor[T, V]", f: Callable[[T], U]
+    ) -> "Bifunctor[U, V]":
         pass
 
     @kind_function
-    def second(self: "Bifunctor[T, V]", f: Callable[[V], W]) -> "Bifunctor[T, W]":
+    def second(
+        self: "Bifunctor[T, V]", f: Callable[[V], W]
+    ) -> "Bifunctor[T, W]":
         return self.bimap(lambda x: x, f)
 
 

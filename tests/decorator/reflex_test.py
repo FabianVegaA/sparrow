@@ -57,7 +57,8 @@ T, V = TypeVar("T"), TypeVar("V")
 
 
 @pytest.mark.parametrize(
-    "call, arg, displayer, expected_output, expected_display", cases_with_display
+    "call, arg, displayer, expected_output, expected_display",
+    cases_with_display,
 )
 def test_reflex_with_display(
     call: Callable[[T], V],

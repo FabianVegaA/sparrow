@@ -8,7 +8,9 @@ cases_before = [
 ]
 
 
-@pytest.mark.parametrize("before_action, function, input, expected", cases_before)
+@pytest.mark.parametrize(
+    "before_action, function, input, expected", cases_before
+)
 def test_before(before_action, function, input, expected):
     assert before(before_action)(function)(input) == expected
 
@@ -19,7 +21,9 @@ cases_after = [
 ]
 
 
-@pytest.mark.parametrize("function, after_action, input, expected", cases_after)
+@pytest.mark.parametrize(
+    "function, after_action, input, expected", cases_after
+)
 def test_after(function, after_action, input, expected):
     assert after(after_action)(function)(input) == expected
 
@@ -32,7 +36,10 @@ cases_before_after = [
 
 
 @pytest.mark.parametrize(
-    "before_action, function, after_action, input, expected", cases_before_after
+    "before_action, function, after_action, input, expected",
+    cases_before_after,
 )
 def test_before_after(before_action, function, after_action, input, expected):
-    assert after(after_action)(before(before_action)(function))(input) == expected
+    assert (
+        after(after_action)(before(before_action)(function))(input) == expected
+    )

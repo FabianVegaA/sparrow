@@ -4,7 +4,9 @@ from typing import Callable, TypeVar
 T, V, W = TypeVar("T"), TypeVar("V"), TypeVar("W")
 
 
-def after(action: Callable[[V], W]) -> Callable[[Callable[[T], V]], Callable[[T], W]]:
+def after(
+    action: Callable[[V], W]
+) -> Callable[[Callable[[T], V]], Callable[[T], W]]:
     """Decorator that applies a function after the decorated function.
 
     Args:
@@ -31,7 +33,9 @@ def after(action: Callable[[V], W]) -> Callable[[Callable[[T], V]], Callable[[T]
     return decorator
 
 
-def before(action: Callable[[T], V]) -> Callable[[Callable[[V], W]], Callable[[T], W]]:
+def before(
+    action: Callable[[T], V]
+) -> Callable[[Callable[[V], W]], Callable[[T], W]]:
     """Decorator that applies a function before the decorated function.
 
     Args:

@@ -14,7 +14,9 @@ cases_functor = [
 
 
 @pytest.mark.parametrize("result, f, expected", cases_functor)
-def test_fmap(result: Result[T, V], f: Callable[[T], U], expected: Result[U, V]):
+def test_fmap(
+    result: Result[T, V], f: Callable[[T], U], expected: Result[U, V]
+):
     assert result.fmap(f) == expected
 
 
