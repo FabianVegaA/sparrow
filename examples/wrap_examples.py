@@ -1,7 +1,7 @@
-from src.sparrow.data.maybe import Maybe
-from src.sparrow.data.result import Result
-from src.sparrow.decorator.when import when
-from src.sparrow.decorator.wrap import maybe, result
+from sparrow.data.maybe import Maybe
+from sparrow.data.result import Result
+from sparrow.decorator.when import when
+from sparrow.decorator.wrap import maybe, result
 
 
 @maybe

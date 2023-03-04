@@ -2,8 +2,8 @@ from operator import add, mod, mul, sub
 
 import pytest
 
-from src.sparrow.decorator.compose import compose
-from src.sparrow.decorator.currify import currify
+from sparrow.decorator.compose import compose
+from sparrow.decorator.currify import currify
 
 add, sub, mul, mod = map(currify, (add, sub, mul, mod))
 

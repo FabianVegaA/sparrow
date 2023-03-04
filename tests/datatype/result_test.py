@@ -2,7 +2,7 @@ from typing import Callable, TypeVar
 
 import pytest
 
-from src.sparrow.datatype.result import Failure, Result, Success
+from sparrow.datatype.result import Failure, Result, Success
 
 T, V, W, U = TypeVar("T"), TypeVar("V"), TypeVar("W"), TypeVar("U")
 

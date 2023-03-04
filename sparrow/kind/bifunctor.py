@@ -1,7 +1,7 @@
 from typing import Callable, Generic, TypeVar
 
-from src.sparrow import T, U, V, W
-from src.sparrow.kind import Kind, kind_function
+from sparrow import T, U, V, W
+from sparrow.kind import Kind, kind_function
 
 
 class Bifunctor(Generic[T, U], Kind):

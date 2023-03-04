@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Callable, TypeVar
 
-from src.sparrow import identity
+from sparrow import identity
 
 T = TypeVar("T")
 

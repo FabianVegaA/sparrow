@@ -1,7 +1,7 @@
 from typing import Callable, Generic, TypeVar
 
-from src.sparrow import T, U
-from src.sparrow.kind import Kind, kind_function
+from sparrow import T, U
+from sparrow.kind import Kind, kind_function
 
 
 class Functor(Generic[T], Kind):

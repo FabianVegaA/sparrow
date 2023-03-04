@@ -1,9 +1,9 @@
 from functools import wraps
 from typing import Callable, Generic, Optional
 
-from src.sparrow import T
-from src.sparrow.datatype.maybe import Just, Maybe, Nothing
-from src.sparrow.datatype.result import Failure, Result, Success
+from sparrow import T
+from sparrow.datatype.maybe import Just, Maybe, Nothing
+from sparrow.datatype.result import Failure, Result, Success
 
 
 def maybe(f: Callable[..., Optional[T]]) -> Callable[..., Maybe[T]]:

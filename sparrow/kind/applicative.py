@@ -1,8 +1,8 @@
 from typing import Callable, TypeVar
 
-from src.sparrow import T, U
-from src.sparrow.kind import Kind, kind_function
-from src.sparrow.kind.functor import Functor
+from sparrow import T, U
+from sparrow.kind import Kind, kind_function
+from sparrow.kind.functor import Functor
 
 
 class Applicative(Functor[T], Kind):

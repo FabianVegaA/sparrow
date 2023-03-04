@@ -1,7 +1,7 @@
 from operator import add, mod, mul, sub
 
-from src.sparrow.compose import compose
-from src.sparrow.currify import currify
+from sparrow.compose import compose
+from sparrow.currify import currify
 
 add, sub, mul, mod = map(currify, (add, sub, mul, mod))
 

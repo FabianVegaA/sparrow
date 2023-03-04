@@ -2,10 +2,10 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Callable, Generic, TypeVar
 
-from src.sparrow import T, U, V, W, identity
-from src.sparrow.datatype import DataType
-from src.sparrow.kind.bifunctor import Bifunctor
-from src.sparrow.kind.functor import Functor
+from sparrow import T, U, V, W, identity
+from sparrow.datatype import DataType
+from sparrow.kind.bifunctor import Bifunctor
+from sparrow.kind.functor import Functor
 
 
 class Result(Functor[T], Bifunctor[T, V], DataType):

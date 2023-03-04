@@ -1,8 +1,8 @@
 import pytest
 
-from src.sparrow.datatype.maybe import Just, Nothing
-from src.sparrow.datatype.result import Failure, Success
-from src.sparrow.decorator.wrap import maybe, result
+from sparrow.datatype.maybe import Just, Nothing
+from sparrow.datatype.result import Failure, Success
+from sparrow.decorator.wrap import maybe, result
 
 case_maybe = [
     (lambda *a, **k: 1, Just(1)),

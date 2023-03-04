@@ -1,6 +1,6 @@
 import pytest
 
-from src.sparrow.function.when import map_unless, map_when, unless, when
+from sparrow.function.when import map_unless, map_when, unless, when
 
 cases_when = [
     (True, lambda x: x + 1, 1, lambda x: x + 2, 2),
