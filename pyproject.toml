@@ -13,11 +13,11 @@ classifiers = [
     "License :: BSD 3-Clause License",
 ]
 packages = [
-    { include = "sparrow", from = "src" },
-    { include = "sparrow/function", from = "src" },
-    { include = "sparrow/decorator", from = "src" },
-    { include = "sparrow/datatype", from = "src" },
-    { include = "sparrow/kind", from = "src" },
+    { include = "sparrow" },
+    { include = "sparrow/function" },
+    { include = "sparrow/decorator" },
+    { include = "sparrow/datatype" },
+    { include = "sparrow/kind" },
 ]
 keywords = ["functional", "programming", "decorator", "sparrow", "library"]
 
@@ -32,3 +32,9 @@ isort = "^5.12.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 79
