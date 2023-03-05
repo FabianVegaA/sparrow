@@ -38,3 +38,32 @@ def do_some_stuff(x):
 do_some_stuff(2)
 # output: 36
 # display: DEBUG:root:Value: 36
+
+from sparrow.decorator.reflex import critical, debug, error, info, log, warning
+
+
+@log(logging.DEBUG, "Value: {0}")
+def do_some_stuff(x):
+    return 9 << x
+
+
+# output: 36
+# display: DEBUG:root:Value: 36
+
+
+@critical("This is a critical error for value {0}")
+@error("This is an error for value {0}")
+@warning("This is a warning for value {0}")
+@info("This is an info for value {0}")
+@debug("This is a debug for value {0}")
+def do_some_stuff(x):
+    return 9 << x
+
+
+# output: 36
+# display:
+#   DEBUG:root:This is a debug for value 36
+#   INFO:root:This is an info for value 36
+#   WARNING:root:This is a warning for value 36
+#   ERROR:root:This is an error for value 36
+#   CRITICAL:root:This is a critical error for value 36
