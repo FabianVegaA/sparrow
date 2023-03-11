@@ -50,3 +50,11 @@ cases_bind = [
 @pytest.mark.parametrize("maybe, f, expected", cases_bind)
 def test_bind(maybe: Maybe[T], f: Callable[[T], Maybe[V]], expected: Maybe[V]):
     assert maybe.bind(f) == expected
+
+
+def test_singleton():
+    assert Nothing() is Nothing()
+    
+def test_uninitialible_maybe():
+    with pytest.raises(TypeError):
+        Maybe()
