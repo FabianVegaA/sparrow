@@ -1,4 +1,4 @@
-from typing import Callable, Generic, TypeVar
+from typing import Callable, Generic
 
 from sparrow import T, U, V, W
 from sparrow.kind import Kind, kind_function

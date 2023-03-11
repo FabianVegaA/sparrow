@@ -1,6 +1,6 @@
-from typing import Callable, Iterable, Sequence
+from typing import Callable, Sequence
 
-from sparrow import T, V, identity
+from sparrow import T, identity
 
 
 def when(

@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Callable, Optional, TypeVar
+from typing import Callable, Optional
 
 from sparrow import T, V
 

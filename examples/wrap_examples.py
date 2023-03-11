@@ -1,6 +1,5 @@
 from sparrow.data.maybe import Maybe
 from sparrow.data.result import Result
-from sparrow.decorator.when import when
 from sparrow.decorator.wrap import maybe, result
 
 

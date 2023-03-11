@@ -1,6 +1,5 @@
-from abc import ABC
 from dataclasses import dataclass
-from typing import Callable, Generic, Optional, TypeVar
+from typing import Callable, Optional
 
 from sparrow import T, V
 from sparrow.datatype import DataType

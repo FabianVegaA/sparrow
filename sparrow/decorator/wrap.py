@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Callable, Generic, Optional
+from typing import Callable, Optional
 
 from sparrow import T
 from sparrow.datatype.maybe import Just, Maybe, Nothing

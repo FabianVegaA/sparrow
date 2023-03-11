@@ -4,7 +4,7 @@ from typing import Callable, Iterable, Optional
 import pytest
 
 from sparrow import T, V, constant, identity
-from sparrow.decorator.reflex import critical, debug, error, info, log, warning
+from sparrow.decorator.reflex import critical, debug, error, info, warning
 
 
 def flat(iterable: Iterable[Iterable[T]]) -> Iterable[T]:

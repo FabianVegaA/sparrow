@@ -1,5 +1,5 @@
 from functools import partial, wraps
-from inspect import getmembers, isfunction, signature
+from inspect import signature
 from typing import Any, Callable, TypeVar, Union
 
 T = TypeVar("T")
