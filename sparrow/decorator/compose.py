@@ -1,10 +1,12 @@
 from functools import wraps
-from typing import Callable, TypeVar
+from typing import Callable
 
-T = TypeVar("T")
+from sparrow import t
 
 
-def compose(*fs: Callable[[T], T]) -> Callable[[T], T]:
+def compose(
+    *fs: Callable[[t], t]
+) -> Callable[[Callable[[t], t]], Callable[[t], t]]:
     """Compose functions.
 
     Args:
@@ -21,9 +23,9 @@ def compose(*fs: Callable[[T], T]) -> Callable[[T], T]:
         1100
     """
 
-    def decorator(f: Callable[[T], T]) -> Callable[[T], T]:
+    def decorator(f: Callable[[t], t]) -> Callable[[t], t]:
         @wraps(f)
-        def wrapper(x: T) -> T:
+        def wrapper(x: t) -> t:
             for g in fs:
                 x = g(x)
             return f(x)

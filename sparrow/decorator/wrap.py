@@ -19,13 +19,13 @@ def maybe(f: Callable[..., Optional[T]]) -> Callable[..., Maybe[T]]:
     @wraps(f)
     def wrapper(*args, **kwargs) -> Maybe[T]:
         result = f(*args, **kwargs)
-        return Just(result) if result is not None else Nothing
+        return Just(result) if result is not None else Nothing() # type: ignore
 
     return wrapper
 
 
 def result(f: Callable[..., T]) -> Callable[..., Result[T, Exception]]:
-    """Wraps a function that returns a value and catches any exceptions, 
+    """Wraps a function that returns a value and catches any exceptions,
         returning a Result instead.
 
     Args:
@@ -38,8 +38,8 @@ def result(f: Callable[..., T]) -> Callable[..., Result[T, Exception]]:
     @wraps(f)
     def wrapper(*args, **kwargs) -> Result[T, Exception]:
         try:
-            return Success(f(*args, **kwargs))
+            return Success(f(*args, **kwargs)) # type: ignore
         except Exception as e:
-            return Failure(e)
+            return Failure(e) # type: ignore
 
     return wrapper

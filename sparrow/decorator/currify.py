@@ -5,7 +5,7 @@ from typing import Any, Callable, TypeVar, Union
 T = TypeVar("T")
 
 
-def currify(func: Callable[..., T]) -> Callable[..., T]:
+def currify(func: Callable[..., T]) -> Callable[..., Union[Callable[..., T], T]]:
     """
     Currying a function.
     :func: The function to be lazy.

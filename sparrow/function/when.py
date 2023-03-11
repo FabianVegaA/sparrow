@@ -1,27 +1,27 @@
-from typing import Callable, Sequence
+from typing import Callable, Iterable
 
-from sparrow import T, identity
+from sparrow import identity, t
 
 
 def when(
     condition: bool,
-    then: Callable[T, T],
-    value: T,
-    otherwise: Callable[T, T] = identity,
-) -> Callable[T, T]:
-    """Returns the result of applying the function to the value if the condition 
+    then: Callable[[t], t],
+    value: t,
+    otherwise: Callable[[t], t] = identity,
+) -> t:
+    """Returns the result of applying the function to the value if the condition
         is true, otherwise returns the value.
 
     Args:
         condition (bool): The condition to check.
-        then (Callable[T, T]): The function to apply to the value if the condition 
+        then (Callable[[t], t]): The function to apply to the value if the condition
             is true.
-        value (T): The value to pass to the function.
-        otherwise (Callable[T, T], optional): The function to apply to the value if the 
+        value (t): The value to pass to the function.
+        otherwise (Callable[[t], t], optional): The function to apply to the value if the
             condition is false. Defaults to identity.
 
     Returns:
-        Callable[T, T]: The result of applying the function to the value if the 
+        Callable[[t], t]: The result of applying the function to the value if the
             condition is true, otherwise returns the value.
     """
     return then(value) if condition else otherwise(value)
@@ -29,71 +29,71 @@ def when(
 
 def unless(
     condition: bool,
-    then: Callable[T, T],
-    value: T,
-    otherwise: Callable[T, T] = identity,
-) -> Callable[T, T]:
-    """Returns the result of applying the function to the value if the condition 
+    then: Callable[[t], t],
+    value: t,
+    otherwise: Callable[[t], t] = identity,
+) -> t:
+    """Returns the result of applying the function to the value if the condition
         is false, otherwise returns the value.
 
     Args:
         condition (bool): The condition to check.
-        then (Callable[T, T]): The function to apply to the value if the condition 
+        then (Callable[[t], t]): The function to apply to the value if the condition
             is false.
-        value (T): The value to pass to the function.
-        otherwise (Callable[T, T], optional): The function to apply to the value if the 
+        value (t): The value to pass to the function.
+        otherwise (Callable[[t], t], optional): The function to apply to the value if the
             condition is true. Defaults to identity.
 
     Returns:
-        Callable[T, T]: The result of applying the function to the value if the 
+        Callable[[t], t]: The result of applying the function to the value if the
             condition is false, otherwise returns the value.
     """
     return when(not condition, then, value, otherwise)
 
 
 def map_when(
-    predicate: Callable[T, bool],
-    then: Callable[T, T],
-    value: Sequence[T],
-    otherwise: Callable[T, T] = identity,
-) -> Sequence[T]:
-    """Returns a sequence of the results of applying the function to the value if the 
+    predicate: Callable[[t], bool],
+    then: Callable[[t], t],
+    value: Iterable[t],
+    otherwise: Callable[[t], t] = identity,
+) -> Iterable[t]:
+    """Returns a sequence of the results of applying the function to the value if the
         condition is true, otherwise returns the value.
 
     Args:
-        predicate (Callable[T, bool]): The function to check the condition.
-        then (Callable[T, T]): The function to apply to the value if the condition 
+        predicate (Callable[[t], bool]): The function to check the condition.
+        then (Callable[[t], t]): The function to apply to the value if the condition
             is true.
-        value (Sequence[T]): The value to pass to the function.
-        otherwise (Callable[T, T], optional): The function to apply to the value if 
+        value (Iterable[t]): The value to pass to the function.
+        otherwise (Callable[[t], t], optional): The function to apply to the value if
             the condition is false. Defaults to identity.
 
     Returns:
-        Sequence[T]: A sequence of the results of applying the function to the value if 
+        Iterable[t]: A sequence of the results of applying the function to the value if
             the condition is true, otherwise returns the value.
     """
     return map(lambda x: when(predicate(x), then, x, otherwise), value)
 
 
 def map_unless(
-    predicate: Callable[T, bool],
-    then: Callable[T, T],
-    value: Sequence[T],
-    otherwise: Callable[T, T] = identity,
-) -> Sequence[T]:
-    """Returns a sequence of the results of applying the function to the value if the 
+    predicate: Callable[[t], bool],
+    then: Callable[[t], t],
+    value: Iterable[t],
+    otherwise: Callable[[t], t] = identity,
+) -> Iterable[t]:
+    """Returns a sequence of the results of applying the function to the value if the
         condition is false, otherwise returns the value.
 
     Args:
-        predicate (Callable[T, bool]): The function to check the condition.
-        then (Callable[T, T]): The function to apply to the value if the condition 
+        predicate (Callable[[t], bool]): The function to check the condition.
+        then (Callable[[t], t]): The function to apply to the value if the condition
             is false.
-        value (Sequence[T]): The value to pass to the function.
-        otherwise (Callable[T, T], optional): The function to apply to the value if the 
-            condition is true. Defaults to identity.
+        value (Iterable[t]): The value to pass to the function.
+        otherwise (Callable[[t], t], optional): The function to apply to the value if
+            the condition is true. Defaults to identity.
 
     Returns:
-        Sequence[T]: A sequence of the results of applying the function to the value if 
+        Iterable[t]: A sequence of the results of applying the function to the value if
             the condition is false, otherwise returns the value.
     """
     return map(lambda x: unless(predicate(x), then, x, otherwise), value)

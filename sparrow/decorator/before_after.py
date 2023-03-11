@@ -1,12 +1,12 @@
 from functools import wraps
-from typing import Callable, TypeVar
+from typing import Callable
 
-T, V, W = TypeVar("T"), TypeVar("V"), TypeVar("W")
+from sparrow import t, v, w
 
 
 def after(
-    action: Callable[[V], W]
-) -> Callable[[Callable[[T], V]], Callable[[T], W]]:
+    action: Callable[[v], w]
+) -> Callable[[Callable[[t], v]], Callable[[t], w]]:
     """Decorator that applies a function after the decorated function.
 
     Args:
@@ -23,9 +23,9 @@ def after(
         4
     """
 
-    def decorator(f: Callable[[T], V]) -> Callable[[T], W]:
+    def decorator(f: Callable[[t], v]) -> Callable[[t], w]:
         @wraps(f)
-        def wrapper(x: T) -> W:
+        def wrapper(x: t) -> w:
             return action(f(x))
 
         return wrapper
@@ -34,8 +34,8 @@ def after(
 
 
 def before(
-    action: Callable[[T], V]
-) -> Callable[[Callable[[V], W]], Callable[[T], W]]:
+    action: Callable[[t], v]
+) -> Callable[[Callable[[v], w]], Callable[[t], w]]:
     """Decorator that applies a function before the decorated function.
 
     Args:
@@ -52,9 +52,9 @@ def before(
         2
     """
 
-    def decorator(f: Callable[[V], W]) -> Callable[[T], W]:
+    def decorator(f: Callable[[v], w]) -> Callable[[t], w]:
         @wraps(f)
-        def wrapper(x: T) -> W:
+        def wrapper(x: t) -> w:
             return f(action(x))
 
         return wrapper

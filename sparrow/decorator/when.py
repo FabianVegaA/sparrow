@@ -1,21 +1,21 @@
 from functools import wraps
-from typing import Callable, TypeVar
+from typing import Callable
 
-from sparrow import identity
-
-T = TypeVar("T")
+from sparrow import t
 
 
-def when(proposition: Callable[[T], bool]) -> Callable[[T], T]:
-    """Return a function that returns its argument if proposition is true, 
+def when(
+    proposition: Callable[[t], bool]
+) -> Callable[[Callable[[t], t]], Callable[[t], t]]:
+    """Return a function that returns its argument if proposition is true,
     otherwise returns unchanged argument.
 
     Args:
-        proposition (Callable[[T], bool]): A function that takes an argument and 
+        proposition (Callable[[t], bool]): A function that takes an argument and
             returns a boolean.
 
     Returns:
-        Callable[[T], T]: A function that returns its argument if proposition is true, 
+        Callable[[t], t]: A function that returns its argument if proposition is true,
             otherwise returns unchanged argument.
 
     Examples:
@@ -28,10 +28,10 @@ def when(proposition: Callable[[T], bool]) -> Callable[[T], T]:
         0
     """
 
-    def decorator(then: Callable[[T], T]) -> Callable[[T], T]:
+    def decorator(then: Callable[[t], t]) -> Callable[[t], t]:
         @wraps(then)
-        def wrapper(x: T) -> T:
-            return then(x) if proposition(x) else identity(x)
+        def wrapper(x: t) -> t:
+            return then(x) if proposition(x) else x
 
         return wrapper
 

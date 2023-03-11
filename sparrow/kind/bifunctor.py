@@ -1,20 +1,20 @@
 from typing import Callable, Generic
 
-from sparrow import T, U, V, W
+from sparrow import T, U, V, W, t, u, v, w
 from sparrow.kind import Kind, kind_function
 
 
 class Bifunctor(Generic[T, U], Kind):
     @kind_function
     def bimap(
-        self: "Bifunctor[T, V]", f: Callable[[T], U], g: Callable[[V], W]
-    ) -> "Bifunctor[U, W]":
+        self: "Bifunctor[t, v]", f: Callable[[t], v], g: Callable[[v], w]
+    ) -> "Bifunctor[u, w]":
         pass
 
     @kind_function
     def first(
-        self: "Bifunctor[T, V]", f: Callable[[T], U]
-    ) -> "Bifunctor[U, V]":
+        self: "Bifunctor[t, v]", f: Callable[[t], u]
+    ) -> "Bifunctor[u, v]":
         pass
 
     @kind_function

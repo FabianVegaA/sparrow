@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Callable
 
-from sparrow import T, U, V, W, identity
+from sparrow import t, u, v, w, T, V, identity
 from sparrow.datatype import DataType
 from sparrow.kind.bifunctor import Bifunctor
 from sparrow.kind.functor import Functor
@@ -11,7 +11,7 @@ class Result(Functor[T], Bifunctor[T, V], DataType):
     def __repr__(self):
         return f"Result({self.value}, {self.error})"
 
-    def __eq__(self: "Result[T, V]", other: "Result[T, V]") -> bool:
+    def __eq__(self: "Result[t, v]", other: "Result[t, v]") -> bool:  # type: ignore
         if isinstance(self, Failure) and isinstance(other, Failure):
             return self.error == other.error
         elif isinstance(self, Success) and isinstance(other, Success):
@@ -19,22 +19,22 @@ class Result(Functor[T], Bifunctor[T, V], DataType):
         else:
             return False
 
-    def fmap(self: "Result[T]", f: Callable[[T], V]) -> "Result[V]":
+    def fmap(self: "Result[t, v]", f: Callable[[t], u]) -> "Result[u, v]":
         return Success(f(self.value)) if isinstance(self, Success) else self
 
     def bimap(
-        self: "Result[T, V]", f: Callable[[T], U], g: Callable[[V], W]
-    ) -> "Result[U, W]":
+        self: "Result[t, v]", f: Callable[[t], u], g: Callable[[v], w]
+    ) -> "Result[u, w]":
         return (
-            Success(f(self.value))
+            Success(f(self.value)) # type: ignore
             if isinstance(self, Success)
-            else Failure(g(self.error))
+            else Failure(g(self.error)) # type: ignore
         )
 
-    def first(self: "Result[T, V]", f: Callable[[T], U]) -> "Result[U, V]":
+    def first(self: "Result[t, v]", f: Callable[[t], u]) -> "Result[u, v]":
         return self.bimap(f, identity)
 
-    def second(self: "Result[T, V]", f: Callable[[V], W]) -> "Result[T, W]":
+    def second(self: "Result[t, v]", f: Callable[[v], w]) -> "Result[t, w]":
         return self.bimap(identity, f)
 
 
@@ -42,7 +42,7 @@ class Result(Functor[T], Bifunctor[T, V], DataType):
 class Success(Result[T, V]):
     __slots__ = ("value",)
 
-    value: T
+    value: t
 
     def __repr__(self):
         return f"Success({self.value})"
@@ -52,7 +52,7 @@ class Success(Result[T, V]):
 class Failure(Result[T, V]):
     __slots__ = ("error",)
 
-    error: V
+    error: v
 
     def __repr__(self):
         return f"Failure({self.error})"
