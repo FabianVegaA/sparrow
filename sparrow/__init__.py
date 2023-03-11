@@ -1,14 +1,24 @@
-from typing import Callable, TypeVar
+from typing import Callable, Type, TypeVar
 
-T, V, U, W = TypeVar("T"), TypeVar("V"), TypeVar("U"), TypeVar("W")
+# Type variables
+T = TypeVar("T")
+V = TypeVar("V")
+U = TypeVar("U")
+W = TypeVar("W")
+
+# Type aliases
+t = Type[T]
+v = Type[V]
+u = Type[U]
+w = Type[W]
 
 
-def identity(x: T) -> T:
+def identity(x: t) -> t:
     """Returns the value passed to it."""
     return x
 
 
-def constant(x: T) -> Callable[[...], T]:
+def constant(x: t) -> Callable[[v], t]:
     """Makes a function that always returns the same value."""
 
     def f(*args, **kwargs):
