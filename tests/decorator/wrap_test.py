@@ -6,7 +6,7 @@ from sparrow.decorator.wrap import maybe, result
 
 case_maybe = [
     (lambda *a, **k: 1, Just(1)),
-    (lambda *a, **k: None, Nothing),
+    (lambda *a, **k: None, Nothing()),
 ]
 
 
