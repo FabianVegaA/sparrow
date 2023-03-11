@@ -36,3 +36,7 @@ def test_bimap(
     expected: Result[U, W],
 ):
     assert result.bimap(f, g) == expected
+
+def test_uninitialible_result():
+    with pytest.raises(TypeError):
+        Result()
