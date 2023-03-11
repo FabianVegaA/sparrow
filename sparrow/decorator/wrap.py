@@ -25,7 +25,8 @@ def maybe(f: Callable[..., Optional[T]]) -> Callable[..., Maybe[T]]:
 
 
 def result(f: Callable[..., T]) -> Callable[..., Result[T, Exception]]:
-    """Wraps a function that returns a value and catches any exceptions, returning a Result instead.
+    """Wraps a function that returns a value and catches any exceptions, 
+        returning a Result instead.
 
     Args:
         f (Callable[..., T]): The function to wrap.

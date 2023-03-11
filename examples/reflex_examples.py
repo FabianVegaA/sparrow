@@ -1,6 +1,9 @@
 from sparrow.compose import compose
 from sparrow.currify import currify
 from sparrow.reflex import reflex
+from operator import add, sub, mul, mod
+import logging
+from sparrow.decorator.reflex import critical, debug, error, info, log, warning
 
 add, sub, mul, mod = map(currify, (add, sub, mul, mod))
 
@@ -25,12 +28,14 @@ add_one_and_double_return_modulo_three_with_reflex(2)
 # output: 0
 # display: The value is 0 and the type is <class 'int'>
 
-debug = reflex(lambda v: logging.debug(f"Value: {v}"))
+
+def my_debug(f: callable) -> callable:
+    return reflex(lambda v: logging.debug(f"Value: {v}"))(f)
 
 logging.basicConfig(level=logging.DEBUG)
 
 
-@debug
+@my_debug
 def do_some_stuff(x):
     return 9 << x
 
@@ -39,7 +44,7 @@ do_some_stuff(2)
 # output: 36
 # display: DEBUG:root:Value: 36
 
-from sparrow.decorator.reflex import critical, debug, error, info, log, warning
+
 
 
 @log(logging.DEBUG, "Value: {0}")

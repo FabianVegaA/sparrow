@@ -7,13 +7,16 @@ T = TypeVar("T")
 
 
 def when(proposition: Callable[[T], bool]) -> Callable[[T], T]:
-    """Return a function that returns its argument if proposition is true, otherwise returns unchanged argument.
+    """Return a function that returns its argument if proposition is true, 
+    otherwise returns unchanged argument.
 
     Args:
-        proposition (Callable[[T], bool]): A function that takes an argument and returns a boolean.
+        proposition (Callable[[T], bool]): A function that takes an argument and 
+            returns a boolean.
 
     Returns:
-        Callable[[T], T]: A function that returns its argument if proposition is true, otherwise returns unchanged argument.
+        Callable[[T], T]: A function that returns its argument if proposition is true, 
+            otherwise returns unchanged argument.
 
     Examples:
         >>> @when(lambda x: x != 0)

@@ -1,6 +1,7 @@
 from sparrow.data.maybe import Maybe
 from sparrow.data.result import Result
 from sparrow.decorator.wrap import maybe, result
+from typing import Optional
 
 
 @maybe
