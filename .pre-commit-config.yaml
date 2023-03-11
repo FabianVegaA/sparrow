@@ -35,3 +35,4 @@ repos:
         language: python
         args: []
         additional_dependencies: []
+        pass_filenames: false
