@@ -1,8 +1,8 @@
 from abc import ABCMeta
 from functools import partial
-from typing import Callable, Optional
+from typing import Callable, Union
 
-from sparrow import constant
+from sparrow import t
 
 
 class Kind(metaclass=ABCMeta):
@@ -49,8 +49,8 @@ class Kind(metaclass=ABCMeta):
 
 
 def kind_function(
-    func: Optional[Callable] = None, *, has_default: bool = False
-) -> Callable:
+    has_default: Union[Callable[..., t], bool] = False
+) -> Union[Callable[..., t], Callable[[Callable[..., t]], Callable[..., t]]]:
     """A decorator that marks a function as a kind function
 
     Examples:
@@ -62,23 +62,13 @@ def kind_function(
     ...     @kind_function(has_default=True)
     ...     def neq(self: "Eq[t]", b: "Eq[t]") -> bool:
     ...         return not self.eq(b)
-    ...
-
     """
 
-    # This is a bit of a hack to allow us to receive `has_default` without
-    # requiring it to be a keyword argument.
-    if isinstance(func, bool):
-        has_default = func
-        func = None
-
-    def decorator(f: Callable) -> Callable:
+    def decorator(f: Callable, has_default: bool) -> Callable:
         if not has_default:
             f.__isabstractmethod__ = True  # type: ignore
         return f
 
-    # This is a bit of a hack to allow us to us
-    # `@kind_function` without parentheses.
-    return (
-        decorator if func is None else constant(partial(decorator, func))  # type: ignore
-    )
+    if isinstance(has_default, bool):
+        return partial(decorator, has_default=has_default)
+    return decorator(has_default, has_default=False)
